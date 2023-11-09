@@ -50,6 +50,15 @@ public class ZombieController : MonoBehaviour
                     currentlyIs = ZombieState.Attack;
                 }
                 break;
+
+            case ZombieState.Dying:
+
         }
         }
+    internal void dieNow()
+    {
+        zombieAnimator.SetBool("isDying", true);
+        Destroy(gameObject,5);
+        currentlyIs = ZombieState.Dying;
+    }
     }

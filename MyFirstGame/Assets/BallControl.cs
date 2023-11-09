@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Sprites;
 using UnityEngine;
 
 public class BallControl : MonoBehaviour
 {
     Rigidbody rb;
-    float kickStrength = 150;
+    float kickStrength = 10;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+       
         rb = GetComponent<Rigidbody>();
     }
 
@@ -17,9 +19,10 @@ public class BallControl : MonoBehaviour
     {
 
     }
-    void KickBall(Transform kicker)
+    public void KickBall(Transform kicker)
     {
         rb.AddForce(kickStrength * kicker.forward, ForceMode.Impulse);
+        rb.AddExplosionForce(kickStrength, kicker.position, 4);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,7 +31,14 @@ public class BallControl : MonoBehaviour
         { print("Boing!!"); }
         else
         {
-            print("Ouch");
+            ZombieController testZombie = collision.gameObject.GetComponent<ZombieController>();
+            if (testZombie != null)
+            {
+                testZombie.dieNow();
+            }
+            
+                print("Ouch");
+
             KickBall(collision.transform );
         }
     }
