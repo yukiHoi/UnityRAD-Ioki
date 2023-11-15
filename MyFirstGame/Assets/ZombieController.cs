@@ -6,7 +6,7 @@ public class ZombieController : MonoBehaviour
 {
     cube player;
     Animator zombieAnimator;
-    enum ZombieState { Idle, Attack, Follow }
+    enum ZombieState { Idle, Attack, Follow, Dying }
     ZombieState currentlyIs = ZombieState.Idle;
     private float aggroRadius = 10;
     private float walkingSpeed = 0.3f;
@@ -52,6 +52,7 @@ public class ZombieController : MonoBehaviour
                 break;
 
             case ZombieState.Dying:
+                break;
 
         }
         }
