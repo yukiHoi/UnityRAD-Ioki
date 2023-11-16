@@ -34,7 +34,7 @@ public class BallControl : MonoBehaviour
             ZombieController testZombie = collision.gameObject.GetComponent<ZombieController>();
             if (testZombie != null)
             {
-                testZombie.dieNow();
+             testZombie.dieNow();
             }
             
                 print("Ouch");

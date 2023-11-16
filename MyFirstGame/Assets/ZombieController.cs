@@ -8,7 +8,7 @@ public class ZombieController : MonoBehaviour
     Animator zombieAnimator;
     enum ZombieState { Idle, Attack, Follow, Dying }
     ZombieState currentlyIs = ZombieState.Idle;
-    private float aggroRadius = 10;
+    private float aggroRadius = 2;
     private float walkingSpeed = 0.3f;
     private float meleeDistance = 1;
 
@@ -51,15 +51,17 @@ public class ZombieController : MonoBehaviour
                 }
                 break;
 
-            case ZombieState.Dying:
-                break;
+                case ZombieState.Dying:
+                 break;
 
-        }
-        }
+        
+    }
+}
+        
     internal void dieNow()
     {
         zombieAnimator.SetBool("isDying", true);
         Destroy(gameObject,5);
         currentlyIs = ZombieState.Dying;
-    }
+   }
     }
